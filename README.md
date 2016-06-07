@@ -1,4 +1,5 @@
 ## Async Error Catcher
+![https://api.travis-ci.org/madole/async-error-catcher.svg](https://api.travis-ci.org/madole/async-error-catcher.svg)
 
 A helper to automatically catch errors thrown within ExpressJS routes and then pass them to the `next` function so they can be picked up by your error handler at the end of the stack.
 
