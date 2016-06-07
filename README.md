@@ -3,7 +3,7 @@
 A helper to automatically catch errors thrown within ExpressJS routes and then pass them to the `next` function so they can be picked up by your error handler at the end of the stack.
 
 
-```
+```javascript
 import express, { Router } from 'express';
 import catchErrors from 'async-error-catcher';
 
@@ -14,7 +14,7 @@ async function route(req, res, next) {
     /* Do something asynchronous */
 }
 
-router.get(catchError(route));
+router.get(catchErrors(route));
 
 app.use(router);
 
@@ -30,3 +30,5 @@ This also works for any middleware or route function that returns a promise.
 For a more detailed breakdown, I've explained a bit more on my blog.
 
 http://madole.xyz/error-handling-in-express-with-async-await-routes/
+
+_NOTE: Written in ES6, but compiled back to ES5 with babel_
