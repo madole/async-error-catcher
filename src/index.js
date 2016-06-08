@@ -1,4 +1,4 @@
-export default function errorCatcher(fn) {
+export default function asyncErrorCatcher(fn) {
     if (!(fn instanceof Function)) {
         throw new Error('Must supply a function');
     }
