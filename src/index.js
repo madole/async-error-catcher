@@ -5,8 +5,7 @@ export default function errorCatcher(fn) {
 
     return (req, res, next) => {
         const promise = fn(req, res, next);
-        if (promise.catch) {
-            promise.catch(err => next(err));
-        }
+        if (!promise.catch) return;
+        promise.catch(err => next(err));
     };
 }
