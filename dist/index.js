@@ -11,10 +11,9 @@ function errorCatcher(fn) {
 
     return function (req, res, next) {
         var promise = fn(req, res, next);
-        if (promise.catch) {
-            promise.catch(function (err) {
-                return next(err);
-            });
-        }
+        if (!promise.catch) return;
+        promise.catch(function (err) {
+            return next(err);
+        });
     };
 }
