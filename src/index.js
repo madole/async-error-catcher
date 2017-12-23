@@ -3,8 +3,8 @@ export default function asyncErrorCatcher(fn) {
         throw new Error('Must supply a function');
     }
 
-    return (req, res, next) => {
-        const promise = fn(req, res, next);
+    return (req, res, next, ...rest) => {
+        const promise = fn(req, res, next, ...rest);
         if (!promise.catch) return;
         promise.catch(err => next(err));
     };
