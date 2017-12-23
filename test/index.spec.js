@@ -55,3 +55,19 @@ test('should not throw error if non async function is passed in', t => {
     };
     routeWithCatcher(req, res, next);
 });
+
+test('should handle extra route parameters', async t => {
+    function route(req, res, next, param) {
+        t.is(param, 'param');
+        return Promise.resolve('x');
+    }
+
+    const routeWithCatcher = catchErrors(route);
+    const req = {};
+    const res = {};
+    const next = () => {
+        t.fail('no error passed');
+    };
+
+    routeWithCatcher(req, res, next, 'param');
+});
