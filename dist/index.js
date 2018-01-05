@@ -15,7 +15,7 @@ function asyncErrorCatcher(fn) {
         }
 
         var promise = fn.apply(undefined, [req, res, next].concat(rest));
-        if (!promise.catch) return;
+        if (!promise || !promise.catch) return;
         promise.catch(function (err) {
             return next(err);
         });
